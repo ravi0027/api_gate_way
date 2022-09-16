@@ -36,6 +36,9 @@ resource "aws_api_gateway_stage" "api_gateway_stage" {
   rest_api_id          = aws_api_gateway_rest_api.api_gateway_rest_api.id
   stage_name           = var.stage_name
   xray_tracing_enabled = var.xray_tracing_enabled
+  cloudwatch_settings {
+    enabled = true
+  }
 
   dynamic "access_log_settings" {
     for_each = local.create_log_group ? [1] : []
@@ -52,9 +55,8 @@ resource "aws_api_gateway_method_settings" "api_gateway_method_settings" {
   stage_name  = aws_api_gateway_stage.api_gateway_stage.stage_name
   method_path = "*/*"
   settings {
-    metrics_enabled    = var.metrics_enabled
-    data_trace_enabled = true
-    logging_level      = var.logging_level
+    metrics_enabled = var.metrics_enabled
+    logging_level   = var.logging_level
   }
 }
 resource "aws_cloudwatch_log_group" "cloudwatch_log_group" {
