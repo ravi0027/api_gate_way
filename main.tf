@@ -52,8 +52,9 @@ resource "aws_api_gateway_method_settings" "api_gateway_method_settings" {
   stage_name  = aws_api_gateway_stage.api_gateway_stage.stage_name
   method_path = "*/*"
   settings {
-    metrics_enabled = var.metrics_enabled
-    logging_level   = var.logging_level
+    metrics_enabled    = var.metrics_enabled
+    data_trace_enabled = true
+    logging_level      = var.logging_level
   }
 }
 resource "aws_cloudwatch_log_group" "cloudwatch_log_group" {

@@ -105,6 +105,11 @@ variable "rest_api_policy" {
 EOF
 }
 
+variable "private_link_target_arns" {
+  type        = list(string)
+  description = "A list of target ARNs for VPC Private Link"
+  default     = []
+}
 
 
 variable "stage_name" {
