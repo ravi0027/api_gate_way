@@ -26,7 +26,8 @@ variable "openapi_config" {
 variable "endpoint_type" {
   type        = string
   description = "The type of the endpoint. One of - PUBLIC, PRIVATE, REGIONAL"
-  default     = "REGIONAL"
+  default     = "PRIVATE"
+
 }
 
 variable "logging_level" {
