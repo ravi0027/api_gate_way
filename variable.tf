@@ -27,11 +27,6 @@ variable "endpoint_type" {
   type        = string
   description = "The type of the endpoint. One of - PUBLIC, PRIVATE, REGIONAL"
   default     = "REGIONAL"
-
-  validation {
-    condition     = contains(["EDGE", "REGIONAL", "PRIVATE"], var.endpoint_type)
-    error_message = "Valid values for var: endpoint_type are (EDGE, REGIONAL, PRIVATE)."
-  }
 }
 
 variable "logging_level" {
@@ -50,7 +45,7 @@ variable "metrics_enabled" {
 variable "xray_tracing_enabled" {
   description = "A flag to indicate whether to enable X-Ray tracing."
   type        = bool
-  default     = false
+  default     = true
 }
 
 
