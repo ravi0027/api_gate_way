@@ -1,6 +1,6 @@
 locals {
   create_rest_api_policy = var.rest_api_policy != null
-  create_log_group       = var.logging_level != "OFF"
+  create_log_group       = var.logging_level
 }
 
 resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
