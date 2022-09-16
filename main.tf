@@ -36,9 +36,6 @@ resource "aws_api_gateway_stage" "api_gateway_stage" {
   rest_api_id          = aws_api_gateway_rest_api.api_gateway_rest_api.id
   stage_name           = var.stage_name
   xray_tracing_enabled = var.xray_tracing_enabled
-  cloudwatch_settings {
-    enabled = true
-  }
 
   dynamic "access_log_settings" {
     for_each = local.create_log_group ? [1] : []
